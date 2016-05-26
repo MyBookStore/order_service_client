@@ -10,7 +10,6 @@
 /test/version_tmp/
 /tmp/
 .idea
-.gitignore
 
 ## Specific to RubyMotion:
 .dat*
