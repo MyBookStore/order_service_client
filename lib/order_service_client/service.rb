@@ -12,13 +12,13 @@ module OrderServiceClient
     end
 
     def create params
-      @order = JSON.parse(execute(:post, create_order_url, params, @user))
-      Resources::Order.new @order
+      response = execute(:post, create_order_url, params, @user)
+      Resources::Order.new response.body['user']
     end
 
     def fetch_orders_for_customer customer
-      @order  = JSON.parse(execute(:get, orders_url, {customer_id: customer.id}, @user).to_json)
-      Resources::Order.new @order
+      response = execute(:get, orders_url, {customer_id: customer.id}, @user)
+      Resources::Order.new response.body['user']
     end
   end
 end
